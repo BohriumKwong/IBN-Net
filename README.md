@@ -28,13 +28,13 @@ Xingang Pan, Ping Luo, Jianping Shi, Xiaoou Tang. ["Two at Once: Enhancing Learn
 
 <img align="middle" width="827" height="500" src="https://github.com/BohriumKwong/IBN-Net/blob/master/utils/images/densenet-IBN-b.jpg">
 
-然后是根据论文原文所述 "only add three IN layers after **the first convolution layer (conv1)** and **the first two convolutiongroups(conv2x, conv3x)**":
+然后是根据论文原文所述 "only add three IN layers after **the first convolution layer (conv1)** and **the first two convolution groups(conv2x, conv3x)**":
 
 <img align="middle" width="867" height="423" src="https://github.com/BohriumKwong/IBN-Net/blob/master/utils/images/densenet-structure.jpg">
 
 ### Results
-这里用的是我们自己使用的结直肠癌九分类的公开数据集CRC_9_CLASS数据集进行的测试。其中我们只取颜色深浅筛选后的NO-NORM-100K数据集以及加入一半的COLOR-NORM-100K数据集作为训练集,剩下不同颜色深浅的NO-NORM-100K作为测试集,剩下的CRC-VAL-HE-7K这个数据集是没有参与任何训练过程的,因此将其作为验证集。训练时数据加载及增强使用到的我本人修改的`dataloader`的方法(详见 https://github.com/BohriumKwong/pytorch_data_augmention_loader )。
-以下是训练的结果：
+这里用的是我们自己使用的结直肠癌九分类的公开数据集CRC_9_CLASS进行的测试。其中我们只取颜色深浅筛选后的NO-NORM-100K数据集以及加入一半的COLOR-NORM-100K数据集作为训练集,剩下不同颜色深浅的NO-NORM-100K作为测试集;而从没参与任何训练过程的CRC-VAL-HE-7K数据集则作为验证集。训练时数据加载及增强使用到的我本人修改的`dataloader`的方法(详见 https://github.com/BohriumKwong/pytorch_data_augmention_loader )。
+以下是测试的结果：
 
 acc/loss (base on focal loss,the weight of 'TUM' is 1.1 others are 1) on the CRC_9_CLASS test dataset(CRC-VAL-HE-7K) are reported.
 
