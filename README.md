@@ -20,15 +20,15 @@ Xingang Pan, Ping Luo, Jianping Shi, Xiaoou Tang. ["Two at Once: Enhancing Learn
 ### Modify
 原作者需要在论文中提及到IBN-b的结构,但这个结构只针对残差网络进行的：
 
-<img align="middle" src="https://github.com/BohriumKwong/IBN-Net/tree/master/utils/images/IBN-b.jpg">
+<img align="middle" width="486" height="333" src="https://github.com/BohriumKwong/IBN-Net/tree/master/utils/images/IBN-b.jpg">
 
 我在基于官方代码的基础上,结合论文中IBN-b结构的描述,将在残差block中**{addition}**之后进行IN替换BN的处理,改为在**dense block中**{transition}**层刚开始的时候(结合所有的dense concat等价于残差block中的addition),将IN替换BN：
 
-<img align="middle" src="https://github.com/BohriumKwong/IBN-Net/tree/master/utils/images/densenet-IBN-b.jpg">
+<img align="middle" width="827" height="500" src="https://github.com/BohriumKwong/IBN-Net/tree/master/utils/images/densenet-IBN-b.jpg">
 
 然后是根据论文所述,only add three IN layers after the first convolution layer (conv1) and the first two convolutiongroups (conv2 x, conv3 x):
 
-<img align="middle" src="https://github.com/BohriumKwong/IBN-Net/tree/master/utils/images/densenet-structure.jpg">
+<img align="middle" width="867" height="423" src="https://github.com/BohriumKwong/IBN-Net/tree/master/utils/images/densenet-structure.jpg">
 
 ### Results
 
