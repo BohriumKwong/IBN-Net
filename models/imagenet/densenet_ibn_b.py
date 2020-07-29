@@ -113,10 +113,10 @@ class _DenseBlock(nn.Sequential):
     def __init__(self, num_layers, num_input_features, bn_size, growth_rate, drop_rate):
         super(_DenseBlock, self).__init__()
         for i in range(num_layers):
-            if i % 3 == 2:
-                layer = _DenseLayer(num_input_features + i * growth_rate, growth_rate, bn_size, drop_rate)
-            else:
-                layer = _DenseLayer(num_input_features + i * growth_rate, growth_rate, bn_size, drop_rate)
+#            if i % 3 == 2:
+#                layer = _DenseLayer(num_input_features + i * growth_rate, growth_rate, bn_size, drop_rate)
+#            else:
+            layer = _DenseLayer(num_input_features + i * growth_rate, growth_rate, bn_size, drop_rate)
             self.add_module('denselayer%d' % (i + 1), layer)
 
 
@@ -183,6 +183,6 @@ class DenseNet(nn.Module):
     def forward(self, x):
         features = self.features(x)
         out = F.relu(features, inplace=True)
-        out = F.avg_pool2d(out, kernel_size=7, stride=1).view(features.size(0), -1)
+        out = F.avg_pool2d(out, kernel_size=out.shape[3], stride=1).view(features.size(0), -1)
         out = self.classifier(out)
         return out
